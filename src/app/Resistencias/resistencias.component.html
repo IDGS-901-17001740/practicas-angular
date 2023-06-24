@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div style="margin-bottom: 10px">
+        <div class="text-center">
+          <img
+            src="https://sdindustrial.com.mx/wp-content/uploads/2022/09/codigos-colores-resistencias.png.webp"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div style="margin-bottom: 10px">
+        <div class="control-group">
+          <label for="selectPrimer">Primera banda:</label>
+          <select
+            name="selectPrimer"
+            id="selectPrimer"
+            class="form-select"
+            [(ngModel)]="color1"
+          >
+          <option value="black">Negro</option>
+          <option value="brown">Café</option>
+          <option value="red">Rojo</option>
+          <option value="orange">Naranja</option>
+          <option value="yellow">Amarillo</option>
+          <option value="green">Verde</option>
+          <option value="blue">Azul</option>
+          <option value="purple">Violeta</option>
+          <option value="gray">Gris</option>
+          <option value="white">Blanco</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="selectSeg">Segunda banda:</label>
+          <select
+            name="selectSeg"
+            id="selectSeg"
+            class="form-select"
+            [(ngModel)]="color2"
+          >
+          <option value="black">Negro</option>
+          <option value="brown">Café</option>
+          <option value="red">Rojo</option>
+          <option value="orange">Naranja</option>
+          <option value="yellow">Amarillo</option>
+          <option value="green">Verde</option>
+          <option value="blue">Azul</option>
+          <option value="purple">Violeta</option>
+          <option value="gray">Gris</option>
+          <option value="white">Blanco</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="selectTer">Tercera banda:</label>
+          <select
+            name="selectTer"
+            id="selectTer"
+            class="form-select"
+            [(ngModel)]="color3"
+          >
+          <option value="black">Negro</option>
+          <option value="brown">Café</option>
+          <option value="red">Rojo</option>
+          <option value="orange">Naranja</option>
+          <option value="yellow">Amarillo</option>
+          <option value="green">Verde</option>
+          <option value="blue">Azul</option>
+          <option value="purple">Violeta</option>
+          <option value="gray">Gris</option>
+          <option value="white">Blanco</option>
+          </select>
+        </div>
+
+        <div class="form-check">
+          <input
+            checked=""
+            id="tolerancia-0"
+            name="tolerancia"
+            required=""
+            type="radio"
+            value="0.05"
+            [(ngModel)]="tolerancia"
+          />
+          <label for="tolerancia-0">ORO 5%</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            id="tolerancia-1"
+            name="tolerancia"
+            required=""
+            type="radio"
+            value="0.1"
+            [(ngModel)]="tolerancia"
+          />
+          <label for="tolerancia-1" class="form-check-label">PLATA 10%</label>
+        </div>
+
+        <div class="text-center mt-3">
+          <button
+            type="submit"
+            class="btn btn-outline-primary"
+            style="margin-right: 10px"
+            name="btnAgregar"
+            value="btnAgregar"
+            (click)="Calcular()"
+          >
+            Calcular
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table text-center table-hover" style="border: 1px solid black">
+        <thead>
+          <th>Banda 1</th>
+          <th>Banda 2</th>
+          <th>Banda 3</th>
+          <th>Valor Resistencia</th>
+          <th>Valor Maximo</th>
+          <th>Valor Minimo</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border: 1px solid black;" [style.background-color]="color1"></td>
+            <td style="border: 1px solid black;" [style.background-color]="color2"></td>
+            <td style="border: 1px solid black;" [style.background-color]="color3"></td>
+            <td style="text-align: center; border: 1px solid black;">{{valor}} Ω</td>
+            <td style="text-align: center; border: 1px solid black;">{{valorMax}} Ω</td>
+            <td style="text-align: center; border: 1px solid black;">{{valorMin}} Ω</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
