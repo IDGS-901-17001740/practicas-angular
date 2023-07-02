@@ -1,0 +1,115 @@
+<form action="" [formGroup]="pizzaForm" (ngSubmit)="obtenerDatos()">
+  <div class="container-fluid py-5">
+    <div class="row">
+      <div class="col-3 mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="nombre" formControlName="nombre" required>
+      </div>
+      <div
+          *ngIf="pizzaForm.get('nombre')?.touched &&
+          pizzaForm.get('nombre')?.errors?.['required']"
+          class="alert alert-danger mb-3"
+        >
+          Este campo es requerido
+        </div>
+      <div class="col-3 mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" formControlName="direccion" required>
+      </div>
+      <div
+          *ngIf="pizzaForm.get('direccion')?.touched &&
+          pizzaForm.get('direccion')?.errors?.['required']"
+          class="alert alert-danger mb-3"
+        >
+          Este campo es requerido
+        </div>
+      <div class="col-3 mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" formControlName="telefono" required>
+      </div>
+      <div
+          *ngIf="pizzaForm.get('telefono')?.touched &&
+          pizzaForm.get('telefono')?.errors?.['required']"
+          class="alert alert-danger mb-3"
+        >
+          Este campo es requerido
+        </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-3 mb-3">
+        <label for="" class="form-label">Tamaño pizza</label>
+      <div *ngFor="let option of tamano" class="form-check">
+        <input class="form-check-input" type="radio" [id]="option" [value]="option" formControlName="tamano" [(ngModel)]="tamanoSeleccionado">
+        <label class="form-check-label" [for]="option">{{ option }}</label>
+      </div>
+      </div>
+      <div class="col-3 mb-3">
+        <label class="form-label">Ingredientes</label><br>
+        <input type="checkbox" id="jamon" name="jamon" formControlName="jamon">
+        <label for="jamon">Jamon</label><br>
+        <input type="checkbox" id="pina" name="pina" formControlName="pina">
+        <label for="pina">Piña</label><br>
+        <input type="checkbox" id="champi" name="champi" formControlName="champi">
+        <label for="champi">Champiñones</label>
+      </div>
+      <div class="col-3 mb-3">
+        <label for="" class="form-label">
+          Número de pizzas
+        </label>
+        <input type="number" class="form-control" formControlName="numPizzas" required>
+      </div>
+      <div
+          *ngIf="pizzaForm.get('numPizzas')?.touched &&
+          pizzaForm.get('numPizzas')?.errors?.['required']"
+          class="alert alert-danger mb-3"
+        >
+          Este campo es requerido
+        </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+</form>
+<div class="row">
+  <div class="col-6">
+    <h1>Pizzas</h1>
+    <table class="table table-dark" style="text-align: center;">
+     <thead>
+     <tr>
+      <th>Cliente</th>
+       <th>Tamaño</th>
+       <th>Ingredientes</th>
+       <th>Num. Pizzas</th>
+       <th>SubTotal</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let pizza of pizzas">
+        <td>{{pizza.nombre}}</td>
+       <td>{{pizza.tamano}}</td>
+       <td>{{pizza.ingrediente}}</td>
+       <td>{{pizza.numPizzas}}</td>
+       <td>{{pizza.subtotal}}</td>
+     </tr>
+   </tbody>
+   </table>
+   </div>
+   <div class="col-6">
+    <div class="col-4">
+      <label for="" class="form-label"> Total: {{total}}</label>
+    </div>
+    <div class="col-4">
+      <label for="" class="form-label">Mandar a: {{nombre}}</label>
+    </div>
+    <div class="col-4">
+      <label for="" class="form-label">A la direccion: {{direccion}}</label>
+    </div>
+   <div class="d-grid">
+    <button type="submit" (click)="obtenerTotal()" class="btn btn-primary">Terminar</button>
+   </div>
+  </div>
+</div>
+
