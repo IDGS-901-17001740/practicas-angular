@@ -8,6 +8,9 @@ import { ResistenciasModule } from './Resistencias/resistencias.module';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { MenuComponent } from './menu/menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app.routing.module';
+import { HomeComponent } from './home/home.component';
+import { CinepolisComponent } from './cinepolis/cinepolis.component';
 
 
 
@@ -15,14 +18,17 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     PizzasComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent,
+    CinepolisComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     PuntosModule,
     ResistenciasModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

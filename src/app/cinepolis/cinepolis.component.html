@@ -1,0 +1,120 @@
+<form action="" [formGroup]="cineForm" (ngSubmit)="obtenerDatos()">
+  <div class="container-fluid py-5">
+    <h2 class="text-center">Cinepolis</h2>
+    <div class="row mb-3">
+      <div class="col-4">
+        <label for="" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="nombre"
+          id="nombre"
+          name="nombre"
+          required
+        />
+        <div
+          *ngIf="cineForm.get('nombre')?.touched &&
+          cineForm.get('nombre')?.errors?.['required']"
+          class="alert alert-danger"
+        >
+          Este campo es requerido
+        </div>
+        <div
+          *ngIf="cineForm.get('nombre')?.touched &&
+          cineForm.get('nombre')?.errors?.['minlength']"
+          class="alert alert-danger"
+        >
+          El nombre debe ser más largo que
+          {{cineForm.get('nombre')?.errors?.['minlength']?.requiredLength}}
+        </div>
+        <label for="" class="form-label">Cantidad de Compradores</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="numPersonas"
+          id="numPersonas"
+          name="numPersonas"
+          required
+        />
+        <div
+          *ngIf="cineForm.get('numPersonas')?.touched &&
+              cineForm.get('numPersonas')?.errors?.['required']"
+          class="alert alert-danger"
+        >
+          Este campo es requerido
+        </div>
+        <div class="col-12">
+          <label for="" class="form-label"
+            >¿Cuenta con tarjeta de descuento?</label
+          ><br />
+
+          <div
+            *ngFor="let option of opciones"
+            class="form-check form-check-inline"
+          >
+            <input
+              class="form-check-input"
+              type="radio"
+              [id]="option"
+              [value]="option"
+              formControlName="tarjeta"
+            />
+            <label class="form-check-label" [for]="option">{{ option }}</label>
+          </div>
+        </div>
+        <label for="" class="form-label">Cantidad de Boletos</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="numBoletos"
+          id="numBoletos"
+          name="numBoletos"
+          required
+        />
+        <div
+          *ngIf="cineForm.get('numBoletos')?.touched &&
+                            cineForm.get('numBoletos')?.errors?.['required']"
+          class="alert alert-danger"
+        >
+          Este campo es requerido
+        </div>
+        <div
+          *ngIf="cineForm.get('numBoletos')?.touched &&
+                            cineForm.get('numBoletos')?.errors?.['min']"
+          class="alert alert-danger"
+        >
+          El número de boletos a comprar debe ser mayor a 1
+        </div>
+      </div>
+      <div class="col-6">
+        <div *ngIf="mostrar1">
+          <div class="card bg-danger text-white mb-3">
+            <div class="card-header">La compra no se pudo completar</div>
+            <div class="card-body">
+              <p class="card-text">{{ aviso }}</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="mostrar2">
+          <div class="card bg-success text-white mb-3">
+            <div class="card-header">Compra Completada</div>
+            <div class="card-body">
+              <p class="card-text">El total de tu compra es {{ total }}</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="mostrar3">
+          <div class="card bg-success text-white mb-3">
+            <div class="card-header">Cliente Especial</div>
+            <div class="card-body">
+              <p class="card-text">Descuento Aplicado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary">Agregar</button>
+    </div>
+  </div>
+</form>
